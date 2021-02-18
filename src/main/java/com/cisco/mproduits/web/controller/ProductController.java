@@ -1,7 +1,7 @@
 package com.mproduits.web.controller;
 
 import com.mproduits.dao.ProductDao;
-import com.mproduits.model.Product;
+import com.cisco.mproduits.model.Product;
 import com.mproduits.web.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

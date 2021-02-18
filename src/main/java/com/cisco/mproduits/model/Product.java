@@ -1,4 +1,4 @@
-package com.mproduits.model;
+package com.cisco.mproduits.model;
 
 
 import javax.persistence.Entity;
