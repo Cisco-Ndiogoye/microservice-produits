@@ -15,6 +15,9 @@
 	<description>Microservice de gestion des produits</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<sonar.projectKey>Cisco-Ndiogoye_microservice-produits</sonar.projectKey>
+		<sonar.organization>cisco-ndiogoye</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -72,6 +75,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.4.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.6</version>
+				<configuration>
+					<excludes>
+						<exclude>com.cisco.mproduits.web.exceptions</exclude>
+						<exclude>**/*Dev.*</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

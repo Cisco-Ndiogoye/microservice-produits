@@ -1,4 +1,4 @@
-package com.mproduits.dao;
+package com.cisco.mproduits.dao;
 
 import com.cisco.mproduits.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,9 @@
 package com.cisco.mproduits.controller;
 
-import com.mproduits.dao.ProductDao;
+import com.cisco.mproduits.dao.ProductDao;
 import com.cisco.mproduits.model.Product;
-import com.mproduits.web.exceptions.ProductNotFoundException;
+import com.cisco.mproduits.web.controller.ProductController;
+import com.cisco.mproduits.web.exceptions.ProductNotFoundException;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +31,7 @@ public class ProductControllerTest extends TestCase {
     ProductDao productDao;
 
     @InjectMocks
-    private com.mproduits.web.controller.ProductController productController;
+    private ProductController productController;
 
     @BeforeEach
     public void setUp() {
@@ -66,6 +67,17 @@ public class ProductControllerTest extends TestCase {
         Product product = new Product(1,"Iphone 11","Apple Product",null,200000.0);
         Mockito.when(productDao.findById(1)).thenReturn(Optional.of(product));
         assertThat(productController.recupererUnProduit(1).get().getPrix(), is(product.getPrix()));
+
+    }
+
+    @Test
+    @DisplayName("GET /Produits/{id}")
+    public void testRecupererUnProduitInexistant() {
+
+        Mockito.when(productDao.findById(1)).thenReturn(Optional.empty());
+        Assertions.assertThrows(ProductNotFoundException.class, () -> {
+            productController.recupererUnProduit(1);
+        });
 
     }
 }
